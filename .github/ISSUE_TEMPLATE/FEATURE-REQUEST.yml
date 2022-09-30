@@ -9,9 +9,9 @@ body:
       label: "Summary"
       description: Provide a brief explanation of the feature
       placeholder: Describe in a few lines your feature request
+      render: markdown
     validations:
       required: true
-    render: markdown
   - type: checkboxes
     attributes:
       label: Is there an existing issue for this?
@@ -25,24 +25,24 @@ body:
       label: "Quick How-to"
       description: High level idea of how the feature could be integrated.
       placeholder: Provide an description of how the feature could be implemented or useful information for development.
+      render: markdown
     validations:
       required: false
-    render: markdown
   - type: textarea
     id: drawbacks
     attributes:
       label: "Drawbacks"
       description: What are the impacted areas of your feature request ?
       placeholder: Identify the drawbacks and impacts while being neutral on your feature request
+      render: markdown
     validations:
       required: false
-    render: markdown
   - type: textarea
     id: unresolved_question
     attributes:
       label: "Unknowns"
       description: What questions still remain unresolved? Anything you aren't sure about it
       placeholder: Help the people to undestand what are the Unknown-unknow areas
+      render: markdown
     validations:
       required: false
-    render: markdown
