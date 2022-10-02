@@ -8,7 +8,7 @@ on:
 name: Test with Code Coverage
 
 jobs:
-  test:
+  coverage_and_testing:
     name: Test
     env:
       PROJECT_NAME_UNDERSCORE: authenticame
