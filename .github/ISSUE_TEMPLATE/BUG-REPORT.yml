@@ -39,13 +39,12 @@ body:
     description: |
       examples:
         - **OS**: Ubuntu 20.04
-        - **Node**: 13.14.0
-        - **npm**: 7.6.3
+        - **Version**: 0.0.1
+        - **URI**: /api
     value: |
         - OS:
-        - Node:
-        - npm:
-    render: markdown
+        - Version:
+        - Request:
   validations:
     required: false
 - type: textarea
