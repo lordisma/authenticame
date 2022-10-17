@@ -6,7 +6,6 @@ use axum::response::IntoResponse;
 use axum::response::Json;
 use serde::{Serialize, Deserialize};
 
-
 /// UserCredentials defines the required credentials that registering is
 /// expecting to be able to successfully register an User into the system
 #[derive(Clone, Debug, Serialize, Deserialize)]

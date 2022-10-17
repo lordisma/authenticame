@@ -1,9 +1,8 @@
 pub mod api;
 
-use api::login;
 use tokio::runtime::Builder;
 use tokio::time::Duration;
-use axum::{Server, Router, routing::*};
+use axum::Server;
 use envconfig::Envconfig;
 
 fn main() {
@@ -20,8 +19,7 @@ fn main() {
 
     rt.block_on(async move {
         let socket = configuration.get_socket();
-        let route = Router::new()
-            .route("/register", post(login::post::register));
+        let route = routes::create_service();
 
         let server = Server::bind(&socket)
             .serve(route.into_make_service());
@@ -33,4 +31,16 @@ fn main() {
 
     // Setting the max time that a task can be running once the runtime is dropped
     rt.shutdown_timeout(Duration::from_secs(10));
+}
+
+mod routes {
+    use axum::routing::*;
+    use super::api::*;
+
+    pub fn create_service() -> Router {
+        let route = Router::new()
+            .route("/register", post(login::post::register));
+        
+        route
+    }       
 }
