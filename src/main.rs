@@ -21,7 +21,7 @@ fn main() {
     rt.block_on(async move {
         let socket = configuration.get_socket();
         let route = Router::new()
-            .route("register", post(login::post::register));
+            .route("/register", post(login::post::register));
 
         let server = Server::bind(&socket)
             .serve(route.into_make_service());
