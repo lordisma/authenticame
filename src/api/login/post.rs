@@ -16,9 +16,11 @@ pub struct UserRegisterCredentials {
 
 ///
 /// Provides the endpoint to create add a user into the database
-/// 
+///
+#[tracing::instrument]
 pub async fn register(
     Json(user_request): Json<UserRegisterCredentials>
 ) -> impl IntoResponse {
+    tracing::debug!("Received register response from user");
     Json::from(user_request)
 }
