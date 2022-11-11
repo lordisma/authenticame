@@ -1,0 +1,32 @@
+version: "3.9"
+services:
+  db:
+    image: "postgres:15"
+    restart: always
+    environment:
+      POSTGRES_PASSWORD_FILE: /run/secrets/password
+      POSTGRES_USER: user
+      PGDATA: /usr/data
+    secrets:
+      - password
+      - credentials
+      - key
+      - ca_credentials
+    volumes:
+      #- data:/usr/data
+      - ../data/pg_hba.conf:/etc/postgresql/15/main/pg_hba.conf
+      - ../data/postgresql.conf:/etc/postgresql/15/main/postgresql.conf
+      - ../src/db/config/migration.sql:/docker-entrypoint-initdb.d/migration.sql
+
+secrets:
+  password:
+    file: ../secrets/password
+  credentials:
+    file: ../secrets/server.crt
+  key:
+    file: ../secrets/server.key
+  ca_credentials:
+    file: ../secrets/root.crt
+
+volumes:
+  data:
